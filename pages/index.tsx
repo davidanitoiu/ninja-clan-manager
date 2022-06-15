@@ -18,15 +18,23 @@ const Home: NextPage = () => {
   const [power, setPower] = useState(100);
   const [progress, updateProgress] = useState('');
 
-  const messageQueue: string[] = [];
+  const [messageQueue, setMessageQueue] = React.useState<string[]>([]);
+
+  async function delay(n) {
+    return new Promise(function (resolve) {
+      setTimeout(resolve, n * 2000);
+    });
+  }
 
   React.useEffect(() => {
-    forEach(messageQueue, message => {
-      setTimeout(() => {
-        console.log(message);
-      }, 2000)
-    })
-    console.dir(messageQueue)
+    if (outcome.missionResult !== MissionResult.UNRESOLVED) {
+      forEach(messageQueue, async (message, i) => {
+        await delay(i);
+
+        updateProgress(message);
+      })
+
+    }
   }, [outcome])
 
   const updateNinja = ((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +78,7 @@ const Home: NextPage = () => {
   })
 
   const startMission = () => {
-    setOutcome(calculateMissionOutcome(ninja, compound, messageQueue))
+    setOutcome(calculateMissionOutcome(ninja, compound, setMessageQueue))
   }
 
   return (

@@ -25,38 +25,40 @@ function doesEscape(ninja: Ninja, compound: Compound) {
   })
 }
 
-export function calculateMissionOutcome(ninja: Ninja, compound: Compound, messageQueue: string[]): MissionOutcome {
+export function calculateMissionOutcome(ninja: Ninja, compound: Compound, setMessageQueue: Dispatch<SetStateAction<string[]>>): MissionOutcome {
   let missionResult = MissionResult.UNRESOLVED;
   let flees = false;
   let spotted = false;
 
-  messageQueue.push('Your ninja begins the approach...');
+  setMessageQueue((prevValue) => [...prevValue, 'Your ninja begins the approach...']);
 
   const sneakPastGuards = every(compound, (guard) => {
     const isGuardSpotted = determineOdds(CHANCE_TO_NOT_SPOT_GUARD, ninja.scouting)
     if (isGuardSpotted) {
-      messageQueue.push('A guard was spotted. Careful now...');
+      setMessageQueue((prevValue) => [...prevValue, 'A guard was spotted. Careful now...']);
 
 
       // lay trap
       const doesNinjaLayTrap = determineOdds(luckRoll(), ninja.decision);
       if (doesNinjaLayTrap) {
-        messageQueue.push('Your Ninja has has decided to lay an ambush...');
+        setMessageQueue((prevValue) => [...prevValue, 'Your Ninja has has decided to lay an ambush...']);
         const isApproachedWhileLayingTrap = determineOdds(ninja.trapMaking, guard.attributes.pace);
 
         if (isApproachedWhileLayingTrap) {
-          messageQueue.push('A guard is approaching!');
+          setMessageQueue((prevValue) => [...prevValue, 'A guard is approaching!']);
           const isSpottedWhileLayingTrap = determineOdds(ninja.stealth, guard.attributes.scouting);
           spotted = true;
           if (isSpottedWhileLayingTrap) {
-            messageQueue.push('Your ninja was spotted while trying to lay the trap. He tries to flee.');
+            setMessageQueue((prevValue) => [...prevValue, 'Your ninja was spotted while trying to lay the trap. He tries to flee.']);
             flees = true;
             return false
           } else {
+            setMessageQueue((prevValue) => [...prevValue, 'The guard has fallen into our trap.']);
             guard.alive = false
             return true;
           }
         } else {
+          setMessageQueue((prevValue) => [...prevValue, 'The guard has fallen into our trap.']);
           guard.alive = false
           return true;
         }
@@ -64,17 +66,17 @@ export function calculateMissionOutcome(ninja: Ninja, compound: Compound, messag
 
       // sneak past guard
     } else {
-      messageQueue.push('He tries to sneak past the guard')
+      setMessageQueue((prevValue) => [...prevValue, 'He tries to sneak past the guard']);
       const isNinjaSpotted = determineOdds(ninja.stealth, guard.attributes.scouting);
       if (isNinjaSpotted) {
-        messageQueue.push('He was spotted!')
+        setMessageQueue((prevValue) => [...prevValue, 'He was spotted!']);
         spotted = true;
         const doesNinjaFight = determineOdds(luckRoll(), (ninja.decision + ninja.aggression + ninja.handToHand) / 3);
         if (doesNinjaFight) {
-          messageQueue.push('Like a true warrior, your Ninja has decided to fight!')
+          setMessageQueue((prevValue) => [...prevValue, 'Like a true warrior, your Ninja has decided to fight!']);
           const doesNinjaWin = determineOdds(ninja.handToHand, guard.attributes.handToHand);
           if (doesNinjaWin) {
-            messageQueue.push("The guard was eliminated.")
+            setMessageQueue((prevValue) => [...prevValue, "The guard was eliminated."]);
             spotted = false;
             guard.alive = false;
             return true;
@@ -82,27 +84,27 @@ export function calculateMissionOutcome(ninja: Ninja, compound: Compound, messag
         }
         return false;
       } else {
-        messageQueue.push('Your Ninja has is moving like a shadow. Unseen. Unheard.')
+        setMessageQueue((prevValue) => [...prevValue, 'Your Ninja has is moving like a shadow. Unseen. Unheard.']);
         return true;
       }
     }
   })
 
   if (compound.length === 0) {
-    messageQueue.push("It appears the compound is unguarded. This will be child's play!");
+    setMessageQueue((prevValue) => [...prevValue, "It appears the compound is unguarded. This will be child's play!"]);
   }
 
   const fled = flees ? doesEscape(ninja, compound) : false
 
   if (sneakPastGuards) {
     missionResult = MissionResult.SUCCESS
-    messageQueue.push("Mission accomplished! Well done, Master Ninja!")
+    setMessageQueue((prevValue) => [...prevValue, "Mission accomplished! Well done, Master Ninja!"]);
   } else if (fled) {
     missionResult = MissionResult.FAILED
-    messageQueue.push("Oh no! Your ninja has fled. Shameful display!")
+    setMessageQueue((prevValue) => [...prevValue, "Oh no! Your ninja has fled. Shameful display!"]);
   } else if (!sneakPastGuards && !fled) {
     missionResult = MissionResult.EXECUTED
-    messageQueue.push("My lord, your ninja has been captured and was executed by the enemy! This is a black day for our school!")
+    setMessageQueue((prevValue) => [...prevValue, "My lord, your ninja has been captured and was executed by the enemy! This is a black day for our school!"]);
   }
 
   return {
