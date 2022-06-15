@@ -107,7 +107,7 @@ const Home: NextPage = () => {
             <button onClick={addGuard}>Add guard</button>
             <button onClick={removeGuard}>Remove guard</button>
             <label htmlFor="guard-power-level">Guard Power Level</label>
-            <input value={power} id={'guard-power-level'} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setPower(event.currentTarget.value) }} type='number' min={10} max={100} />
+            <input value={power} id={'guard-power-level'} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setPower(Number(event.currentTarget.value)) }} type='number' min={10} max={100} />
           </div>
           <Compound compound={compound} updateCompound={updateCompound} />
         </div>
