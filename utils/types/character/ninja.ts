@@ -27,4 +27,4 @@ export type Ninja = {
       negotiation: Attribute,
       influence: Attribute,
     }
-  }
+  
