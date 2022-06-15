@@ -42,7 +42,7 @@ const Home: NextPage = () => {
   const updateCompound = ((event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const attributeInput = event.currentTarget;
-    const guardNumber = attributeInput.getAttribute('data-guard-number');
+    const guardNumber = Number(attributeInput.getAttribute('data-guard-number'));
 
     setCompound(currentValue => {
       currentValue[guardNumber] = {
