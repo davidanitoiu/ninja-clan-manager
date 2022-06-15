@@ -107,7 +107,7 @@ Ninjutsu teachers will train the new students in the art of assassination.
 
 | Teacher Skill | Affected Student Attributes |
 | :-- | :-- |
-| Subeterfuge | stealth, assassination, pickpocketing, lockpicking, anticipation |
+| Subterfuge | stealth, assassination, pickpocketing, lockpicking, anticipation |
 | Fitness | strength, stamina, reflexes, pace, acceleration |
 | Grace | agility, balance, precision |
 | Combat | aggression, hand-to-hand combat, shuriken toss |
@@ -127,14 +127,56 @@ Teachers will have a random point allocation for their skill based on their spec
 | Tiger | Combat, Fitness, Grace |
 | Spy | Scouting, Grace, Chemistry |
 
-#### Backstories
+#### Ninja
+Personal attributes
+* Determination
+* Creativity
+* Decisions
+* Work Rate
+* Aggression
+* Anticipation
+* Influence
+
+Ninja attributes
+    
+1. Physical
+    * strength
+    * stamina
+    * reflexes
+    * pace
+    * acceleration
+    * agility
+    * balance
+    * precision
+1. Combat
+    * hand-to-hand
+    * shuriken toss
+1. Subterfuge
+    * stealth
+    * assassination
+    * pickpocketing
+    * lockpicking
+    * poison
+    * medicine
+    * trap making
+1. Mental
+    * aggression
+    * anticipation
+    * decision
+    * creativity
+    * positioning
+    * scouting
+    * negotiation
+    * influence
+
+### Backstories
 
 Characters have backstories
 
 * Tavern Keeper has gambling debt and needs more cash (higher upkeep)
 * Groundskeeper is a buddhist and fasts a lot (lower upkeep)
 
-#### Race for contracts against rival clan
+### Race for contracts against rival clan
 
 Later iterations could have rival clans bidding on the same contract and only the winning clan gets the reward.
 If both ninjas reach the same area in about the same time
