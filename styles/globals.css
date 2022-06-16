@@ -2,4 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "links.css"
+@import "links.css";
+
+
+.title-border:after {
+    content: "";
+    mask: url(border-image.svg) no-repeat;
+    mask-size: cover;
+    mask-position: 0.75em 103%;
+    @apply block mt-2 w-full h-4 bg-primary-dark;
+}
+
+.progress-bar-background {
+    mask: url(border-1.svg) no-repeat;
+    mask-position: 0% 100%;
+    mask-size: cover;
+    @apply block w-full h-10 bg-secondary-dark;
+}
+
+.progress-bar {    
+    mask: url(border-1.svg) no-repeat;
+    mask-position: 0% 100%;
+    mask-size: cover;
+    @apply block h-10 bg-primary-dark;
+}
