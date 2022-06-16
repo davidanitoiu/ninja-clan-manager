@@ -202,10 +202,32 @@ If both ninjas reach the same area in about the same time
     Ideas that came up in the process:
     - consider using some AI to generate the narrative
     - research how text generator AIs can be included in the project
-
-## Current Step
-
 [v] Defined color theme
 [v] Added font & icons
 [v] Added sidebar
-[ ] Style the mission UI with Tailwind CSS to resemble Championship Manager 01/02
+[v] Style the mission UI with Tailwind CSS to resemble Championship Manager 01/02
+
+## Current Step
+
+[ ] Connect stub UI with mission engine
+[ ] Show Ninja attributes in the Ninjas tab
+
+## UI Progression
+
+
+### Day 2
+
+End of day
+<img src="./public/End Day 2.png" alt="Progress around end of day 2" />
+
+### Day 3
+
+Start of day 
+<img src="./public/Start Day 3.png" alt="Progress around middle of day 3" />
+
+Middle of day 3
+<img src="./public/Middle Day 3.png" alt="Progress around middle of day 3" />
+
+End of day 3
+<img src="./public/End Day 3.png" alt="Progress around end of day 3" />
+
