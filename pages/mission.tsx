@@ -38,7 +38,7 @@ const MissionPage: NextPage = () => {
             })
 
         }
-    }, [outcome])
+    }, [outcome, messageQueue])
 
     const updateNinja = ((event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -100,7 +100,7 @@ const MissionPage: NextPage = () => {
                         <h2 className='text-primary font-display text-3xl pb-8 font-bold'>Objectives</h2>
                         <ul className='grid gap-2 px-2 text-theme-white font-display text-xl'>
                             <li><p className='px-2 py-1 flex items-center gap-2'><GiShurikenAperture />Get hidden missive</p></li>
-                            <li><p className='px-2 py-1  flex items-center gap-2'><GiShurikenAperture />Poison general's flask</p></li>
+                            <li><p className='px-2 py-1  flex items-center gap-2'><GiShurikenAperture />Poison the generals flask</p></li>
                             <li><p className='px-2 py-1  flex items-center gap-2'><GiShurikenAperture />Remain unseen</p></li>
                         </ul>
                     </div>
@@ -117,7 +117,7 @@ const MissionPage: NextPage = () => {
                         <div className='font-display text-theme-white text-lg grid grid-cols-3 items-start ml-4'>
                             <p className='text-xl flex gap-2 items-center'><GiGrainBundle />800 Koku</p>
                             <p className='text-xl flex gap-2 items-center'><GiTreasureMap />Kyoto</p>
-                            <p className=' text-xl flex gap-2 items-center'><FaSnowflake /> Cold</p>
+                            <p className='text-xl flex gap-2 items-center'><FaSnowflake /> Cold</p>
                         </div>
                     </section>
                 </section>
@@ -142,7 +142,7 @@ const MissionPage: NextPage = () => {
                 </section>
 
             </main>
-            <section className='grid grid-cols-2 gap-8 mx-8 lg:hidden'>
+            <section className='grid grid-cols-2 gap-8 mx-8 hidden'>
                 <div>
                     <button onClick={startMission}>Complete mission</button>
                     <p>{progress}</p>
