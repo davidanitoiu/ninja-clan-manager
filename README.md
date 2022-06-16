@@ -9,6 +9,10 @@ Color theme will be generated from this image:
 
 <img src="./public/ninja-gaiden.jpg" alt="Ninja Gaiden Poster" />
 
+Template match UI will be this:
+
+<img src="./public/match-ui.jpg" alt="CM01/02 Match UI" />
+
 ---
 ## DISCLAIMER
 
@@ -201,4 +205,7 @@ If both ninjas reach the same area in about the same time
 
 ## Current Step
 
-Style the mission UI with Tailwind CSS to resemble Championship Manager 01/02 with Ninja Gaiden color theme
+[v] Defined color theme
+[v] Added font & icons
+[v] Added sidebar
+[ ] Style the mission UI with Tailwind CSS to resemble Championship Manager 01/02
