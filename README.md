@@ -5,6 +5,10 @@ Character templates will look like this:
 
 <img src="./public/cm0102-character-sheet.webp" alt="CM01/02 Character Sheet" />
 
+Color theme will be generated from this image:
+
+<img src="./public/ninja-gaiden.jpg" alt="Ninja Gaiden Poster" />
+
 ---
 ## DISCLAIMER
 
@@ -180,3 +184,21 @@ Characters have backstories
 
 Later iterations could have rival clans bidding on the same contract and only the winning clan gets the reward.
 If both ninjas reach the same area in about the same time
+
+## Progress so far
+
+[v] Create attribute table & types for ninja & guards
+[v] Create character generator for ninja & guards
+[v] Faked a rudimentary mission engine, that generates outcomes based on Ninja Stats & Guard stats
+    Ideas that came up in the process:
+    - Ninja has too many chances to fail, consider some cheating mechanism that gives the ninja an edge, but doesn't seem overpowered
+    - Ninjas fight dirty. So cheating is not only permitted, but encouraged!
+    - consider using some AI that better utilizes the large palette of skills
+[v] Implemented a basic message queue which narrates the mission progress in a readable way
+    Ideas that came up in the process:
+    - consider using some AI to generate the narrative
+    - research how text generator AIs can be included in the project
+
+## Current Step
+
+Style the mission UI with Tailwind CSS to resemble Championship Manager 01/02 with Ninja Gaiden color theme
