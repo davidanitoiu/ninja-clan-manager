@@ -7,7 +7,7 @@ Character templates will look like this:
 
 Color theme will be generated from this image:
 
-<img src="./public/ninja-gaiden.jpg" alt="Ninja Gaiden Poster" />
+<img src="./public/Ninja-Gaiden.jpg" alt="Ninja Gaiden Poster" />
 
 Template match UI will be this:
 
