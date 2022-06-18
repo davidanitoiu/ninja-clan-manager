@@ -17,12 +17,14 @@
     mask: url(border-1.svg) no-repeat;
     mask-position: 0% 100%;
     mask-size: cover;
-    @apply block w-full h-10 bg-secondary-dark;
+    @apply block w-full h-16 bg-secondary-dark;
 }
 
 .progress-bar {    
     mask: url(border-1.svg) no-repeat;
     mask-position: 0% 100%;
     mask-size: cover;
-    @apply block h-10 bg-primary-dark;
+    transition: width 2s;
+    @apply block h-16 bg-primary-dark;
 }
+
