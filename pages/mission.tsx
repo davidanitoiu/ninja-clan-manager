@@ -43,7 +43,7 @@ const MissionPage: NextPage = () => {
             })
 
         }
-    }, [missionEvents])
+    }, [missionEvents, outcome.missionResult])
 
     // const updateNinja = ((event: React.ChangeEvent<HTMLInputElement>) => {
     //     event.preventDefault();
