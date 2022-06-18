@@ -1,126 +1,13 @@
-import Compound from 'components/Compound';
-import { capitalize, forEach, map } from 'lodash';
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import React, { useState } from 'react';
-import { calculateMissionOutcome, generateGuard, generateNinja } from 'utils/engine';
-import type { Guard, Ninja } from 'utils/types/character';
-import { MissionOutcome, MissionResult } from 'utils/types/events';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
-  const [ninja, setNinja] = useState<Ninja>(generateNinja(100));
-  const [compound, setCompound] = useState<Guard[]>([]);
-  const [outcome, setOutcome] = useState<MissionOutcome>({
-    missionResult: MissionResult.UNRESOLVED,
-    spotted: false,
-    fled: false
-  })
-  const [power, setPower] = useState(100);
-  const [progress, updateProgress] = useState('');
-
-  const [messageQueue, setMessageQueue] = React.useState<string[]>([]);
-
-  async function delay(n: number) {
-    return new Promise(function (resolve) {
-      setTimeout(resolve, n * 2000);
-    });
-  }
-
-  React.useEffect(() => {
-    if (outcome.missionResult !== MissionResult.UNRESOLVED) {
-      forEach(messageQueue, async (message, i) => {
-        await delay(i);
-
-        updateProgress(message);
-      })
-
-    }
-  }, [outcome])
-
-  const updateNinja = ((event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    const attributeInput = event.currentTarget;
-
-    setNinja(currentValue => ({
-      ...currentValue,
-      [attributeInput.name]: attributeInput.value
-    }))
-  })
-
-  const updateCompound = ((event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    const attributeInput = event.currentTarget;
-    const guardNumber = Number(attributeInput.getAttribute('data-guard-number'));
-
-    setCompound(currentValue => {
-      currentValue[guardNumber] = {
-        ...currentValue[guardNumber],
-        [attributeInput.name]: attributeInput.value
-      }
-      return [...currentValue]
-    })
-  })
-
-  const addGuard = ((event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-
-    setCompound((currentValue: Guard[]) => {
-      const newGuard = generateGuard(power);
-
-      return [...currentValue, newGuard];
-    })
-  })
-
-  const removeGuard = ((event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-
-    setCompound((currentValue: Guard[]) => currentValue.slice(0, currentValue.length - 1))
-  })
-
-  const startMission = () => {
-    setOutcome(calculateMissionOutcome(ninja, compound, setMessageQueue))
-  }
-
   return (
-    <>
-      <Head>
-        <title>Ninja Clan Manager</title>
-        <meta name="description" content="Manager type game, inspired by Football Manager, but with Ninjas" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main style={{ display: 'grid', gridTemplateColumns: '1fr 1fr ', gap: '2em', marginLeft: '2em', marginRight: '2em' }}>
-        <div>
-          <button onClick={startMission}>Complete mission</button>
-          <p>{progress}</p>
-        </div>
-        <div>
-          <p>Outcome: {outcome.missionResult}</p>
-          <p>Spotted: {outcome.spotted.toString()}</p>
-          <p>Fled: {outcome.spotted.toString()}</p>
-        </div>
-        <div >
-          <h2>Ninja</h2>
-          {map(ninja, (attributeValue, attributeName) => (
-            <dd key={attributeName} style={{ display: 'grid', gridTemplateColumns: '1fr auto ' }}>
-              <label htmlFor={'#' + attributeName}>{capitalize(attributeName)}</label>
-              <input value={attributeValue} name={attributeName} id={attributeName} type="number" min="1" max="20" onChange={updateNinja} />
-            </dd>
-          ))}
-
-        </div>
-        <div >
-          <h2>Compound</h2>
-          <div>
-            <button onClick={addGuard}>Add guard</button>
-            <button onClick={removeGuard}>Remove guard</button>
-            <label htmlFor="guard-power-level">Guard Power Level</label>
-            <input value={power} id={'guard-power-level'} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setPower(Number(event.currentTarget.value)) }} type='number' min={10} max={100} />
-          </div>
-          <Compound compound={compound} updateCompound={updateCompound} />
-        </div>
-      </main>
-    </>
+    <div className='grid place-items-center h-screen w-full'>
+      <Link href={"/mission"}>
+        <a className='font-display text-black hover:text-primary text-4xl transition-colors'>Go to Mission Dashboard</a>
+      </Link>
+    </div>
   )
 }
 

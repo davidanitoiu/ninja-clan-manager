@@ -1,6 +1,7 @@
 import { Attribute } from "../basic"
 
 export type Ninja = {
+      name: string,
       strength: Attribute,
       stamina: Attribute,
       reflexes: Attribute,

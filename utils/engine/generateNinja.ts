@@ -4,6 +4,7 @@ import {random} from "lodash";
 
 export function generateNinja(power:PowerLevel):Ninja {
     const ninja:Ninja =  {
+        name: 'Kojiro Kage',
         strength: random(1,20*(power / 100)),
         stamina: random(1,20*(power / 100)),
         reflexes: random(1,20*(power / 100)),

@@ -1,0 +1,3 @@
+aside a {
+    @apply font-display transition-colors rounded focus:bg-primary-dark focus:outline-none hover:bg-primary;
+}

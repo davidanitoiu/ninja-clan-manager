@@ -12,10 +12,19 @@ export enum MissionResult {
 export type MissionOutcome = {
     missionResult: MissionResult,
     spotted: boolean,
-    fled: boolean
+    fled: boolean,
+    assassinated: number,
+    trapped: number,
+    evaded: number,
+    poisoned: number,
   }
   
 export type MissionSetup = {
   ninja: Ninja,
   compound: Compound,
+}
+
+export type MissionEvent = {
+  data: MissionOutcome,
+  story: string
 }

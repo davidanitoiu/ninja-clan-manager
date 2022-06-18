@@ -1,16 +1,30 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "links.css";
+
+
+.title-border:after {
+    content: "";
+    mask: url(border-image.svg) no-repeat;
+    mask-size: cover;
+    mask-position: 0.75em 103%;
+    @apply block mt-2 w-full h-4 bg-primary-dark;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.progress-bar-background {
+    mask: url(border-1.svg) no-repeat;
+    mask-position: 0% 100%;
+    mask-size: cover;
+    @apply block w-full h-16 bg-secondary-dark;
 }
 
-* {
-  box-sizing: border-box;
+.progress-bar {    
+    mask: url(border-1.svg) no-repeat;
+    mask-position: 0% 100%;
+    mask-size: cover;
+    transition: width 2s;
+    @apply block h-16 bg-primary-dark;
 }
+
