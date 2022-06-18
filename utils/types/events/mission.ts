@@ -23,3 +23,8 @@ export type MissionSetup = {
   ninja: Ninja,
   compound: Compound,
 }
+
+export type MissionEvent = {
+  data: MissionOutcome,
+  story: string
+}

@@ -209,7 +209,8 @@ If both ninjas reach the same area in about the same time
 
 ## Current Step
 
-[ ] Connect stub UI with mission engine
+[v] Connect stub UI with mission engine
+[v] Calculate mission outcome from message queue
 [ ] Show Ninja attributes in the Ninjas tab
 
 ## UI Progression
