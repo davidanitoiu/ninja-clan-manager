@@ -135,7 +135,7 @@ const MissionPage: NextPage = () => {
                 </section>
                 <section id="score-board" className="w-full grid grid-cols-2 gap-8 p-4 mt-">
                     <div className='grid place-content-start gap-4 px-4 text-theme-white font-display text-2xl'>
-                        <div className='flex gap-2 items-baseline'><IoSkull className={`text-3xl ${outcome.missionResult === MissionResult.EXECUTED ? 'visible' : 'invisible'}`} /><p className={`title-border text-4xl`}>{ninja.name}</p></div>
+                        <div className='flex gap-2 items-baseline'><IoSkull className={`text-3xl ${outcome.missionResult === MissionResult.EXECUTED ? 'visible' : 'invisible'}`} /><p className={`title-border text-4xl`}>{ninja.personal.name}</p></div>
                         <ul className='grid gap-2 pl-4'>
                             <li><p className='flex justify-between'>Assassinated <span>{outcome.assassinated}</span></p></li>
                             <li><p className='flex justify-between'>Trapped <span>{outcome.trapped}</span></p></li>

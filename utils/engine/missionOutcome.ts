@@ -21,7 +21,7 @@ function doesGuardSpotNinja(ninjaStealthScore: number, guardScoutingScore: numbe
 
 function doesEscape(ninja: Ninja, compound: Compound) {
   return filter(compound, { alive: true }).every(guard => {
-    return determineOdds((guard.attributes.apprehension + guard.attributes.acceleration) / 2, (ninja.reflexes + ninja.acceleration) / 2)
+    return determineOdds((guard.attributes.apprehension + guard.attributes.acceleration) / 2, (ninja.attributes.reflexes + ninja.attributes.acceleration) / 2)
   })
 }
 
@@ -43,7 +43,7 @@ export function calculateMissionOutcome(ninja: Ninja, compound: Compound, update
   }]);
 
   const sneakPastGuards = every(compound, (guard) => {
-    const isGuardSpotted = determineOdds(CHANCE_TO_NOT_SPOT_GUARD, ninja.scouting)
+    const isGuardSpotted = determineOdds(CHANCE_TO_NOT_SPOT_GUARD, ninja.attributes.scouting)
     if (isGuardSpotted) {
       updateMissionEvents((prevValue) => [...prevValue, {
         data: {
@@ -54,7 +54,7 @@ export function calculateMissionOutcome(ninja: Ninja, compound: Compound, update
 
 
       // lay trap
-      const doesNinjaLayTrap = determineOdds(luckRoll(), ninja.decision);
+      const doesNinjaLayTrap = determineOdds(luckRoll(), ninja.attributes.decision);
       if (doesNinjaLayTrap) {
         updateMissionEvents((prevValue) => [...prevValue, {
           data: {
@@ -62,7 +62,7 @@ export function calculateMissionOutcome(ninja: Ninja, compound: Compound, update
           },
           story: 'Your Ninja has has decided to lay an ambush...'
         }]);
-        const isApproachedWhileLayingTrap = determineOdds(ninja.trapMaking, guard.attributes.pace);
+        const isApproachedWhileLayingTrap = determineOdds(ninja.attributes.trapMaking, guard.attributes.pace);
 
         if (isApproachedWhileLayingTrap) {
           updateMissionEvents((prevValue) => [...prevValue, {
@@ -71,7 +71,7 @@ export function calculateMissionOutcome(ninja: Ninja, compound: Compound, update
             },
             story: 'The guard is approaching!'
           }]);
-          const isSpottedWhileLayingTrap = determineOdds(ninja.stealth, guard.attributes.scouting);
+          const isSpottedWhileLayingTrap = determineOdds(ninja.attributes.stealth, guard.attributes.scouting);
           if (isSpottedWhileLayingTrap) {
             updateMissionEvents((prevValue) => [...prevValue, {
               data: {
@@ -116,7 +116,7 @@ export function calculateMissionOutcome(ninja: Ninja, compound: Compound, update
         },
         story: 'He tries to sneak past the guard'
       }]);
-      const isNinjaSpotted = determineOdds(ninja.stealth, guard.attributes.scouting);
+      const isNinjaSpotted = determineOdds(ninja.attributes.stealth, guard.attributes.scouting);
       if (isNinjaSpotted) {
         updateMissionEvents((prevValue) => [...prevValue, {
           data: {
@@ -125,7 +125,7 @@ export function calculateMissionOutcome(ninja: Ninja, compound: Compound, update
           },
           story: 'He was spotted!'
         }]);
-        const doesNinjaFight = determineOdds(luckRoll(), (ninja.decision + ninja.aggression + ninja.handToHand) / 3);
+        const doesNinjaFight = determineOdds(luckRoll(), (ninja.attributes.decision + ninja.attributes.aggression + ninja.attributes.handToHand) / 3);
         if (doesNinjaFight) {
           updateMissionEvents((prevValue) => [...prevValue, {
             data: {
@@ -133,7 +133,7 @@ export function calculateMissionOutcome(ninja: Ninja, compound: Compound, update
             },
             story: 'Like a true warrior, your Ninja has decided to fight!'
           }]);
-          const doesNinjaWin = determineOdds(ninja.handToHand, guard.attributes.handToHand);
+          const doesNinjaWin = determineOdds(ninja.attributes.handToHand, guard.attributes.handToHand);
           if (doesNinjaWin) {
             updateMissionEvents((prevValue) => [...prevValue, {
               data: {
