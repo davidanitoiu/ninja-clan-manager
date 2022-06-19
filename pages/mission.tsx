@@ -1,6 +1,5 @@
 import { forEach, round } from 'lodash';
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import React, { useState } from 'react';
 import { FaSnowflake } from 'react-icons/fa';
 import { GiGrainBundle, GiShurikenAperture, GiTreasureMap } from 'react-icons/gi';
@@ -45,46 +44,6 @@ const MissionPage: NextPage = () => {
         }
     }, [missionEvents, outcome.missionResult])
 
-    // const updateNinja = ((event: React.ChangeEvent<HTMLInputElement>) => {
-    //     event.preventDefault();
-    //     const attributeInput = event.currentTarget;
-
-    //     setNinja(currentValue => ({
-    //         ...currentValue,
-    //         [attributeInput.name]: attributeInput.value
-    //     }))
-    // })
-
-    // const updateCompound = ((event: React.ChangeEvent<HTMLInputElement>) => {
-    //     event.preventDefault();
-    //     const attributeInput = event.currentTarget;
-    //     const guardNumber = Number(attributeInput.getAttribute('data-guard-number'));
-
-    //     setCompound(currentValue => {
-    //         currentValue[guardNumber] = {
-    //             ...currentValue[guardNumber],
-    //             [attributeInput.name]: attributeInput.value
-    //         }
-    //         return [...currentValue]
-    //     })
-    // })
-
-    // const addGuard = ((event: React.MouseEvent<HTMLButtonElement>) => {
-    //     event.preventDefault();
-
-    //     setCompound((currentValue: Guard[]) => {
-    //         const newGuard = generateGuard(power);
-
-    //         return [...currentValue, newGuard];
-    //     })
-    // })
-
-    // const removeGuard = ((event: React.MouseEvent<HTMLButtonElement>) => {
-    //     event.preventDefault();
-
-    //     setCompound((currentValue: Guard[]) => currentValue.slice(0, currentValue.length - 1))
-    // })
-
     const startMission = () => {
         calculateMissionOutcome(ninja, compound, updateMissionEvents)
     }
@@ -93,11 +52,7 @@ const MissionPage: NextPage = () => {
 
     return (
         <>
-            <Head>
-                <title>Ninja Clan Manager - Mission</title>
-                <meta name="description" content="Manager type game, inspired by Football Manager, but with Ninjas" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            
             <main className='h-full w-full grid grid-cols-2 bg-gradient-to-br from-theme-black via-theme-black to-primary-dark'>
                 <section id="mission-name" className='flex flex-col gap-8'>
                     <div className='items-center p-4 rounded'>
