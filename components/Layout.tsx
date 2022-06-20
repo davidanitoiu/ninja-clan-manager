@@ -25,7 +25,7 @@ function Layout({ children }: LayoutProps) {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/">
+                            <Link href="/ninja-roster">
                                 <a className="flex items-center p-2">
                                     <FaUserNinja className="text-xl" />
                                     <span className="ml-3">Ninjas</span>
