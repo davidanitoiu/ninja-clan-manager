@@ -227,7 +227,7 @@ If both ninjas reach the same area in about the same time
     Ideas that came up in the process:
     - Ninja has too many chances to fail, consider some cheating mechanism that gives the ninja an edge, but doesn't seem overpowered
     - Ninjas fight dirty. So cheating is not only permitted, but encouraged!
-    - consider using some AI that better utilizes the large palette of skills
+    - ~~consider using some AI that better utilizes the large palette of skills~~ (see AI section below)
 [v] Implemented a basic message queue which narrates the mission progress in a readable way
     Ideas that came up in the process:
     - consider using some AI to generate the narrative
@@ -247,6 +247,14 @@ If both ninjas reach the same area in about the same time
     -> **consider exporting to own library**
 [v] Update Ninja type to separate attributes from other information
 [ ] Show Ninja attributes in the Ninjas tab
+
+## AI
+
+I wanted to use AI and have it figure out how to best utilize the ninja skills, by reading books & watching movies. 
+
+Thing is... maybe, just MAYBE, it's not a good idea to use machine learning to have AI figure out how to kill humans & get away with it.
+
+Maybe we'll still use it for generating the narrative text. Not sure how to mix it in.
 
 ## UI Progression
 
