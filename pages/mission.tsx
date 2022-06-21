@@ -1,6 +1,6 @@
 import { forEach, round } from 'lodash';
 import type { NextPage } from 'next';
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { FaSnowflake } from 'react-icons/fa';
 import { GiGrainBundle, GiShurikenAperture, GiTreasureMap } from 'react-icons/gi';
 import { ImEye } from 'react-icons/im';
@@ -11,7 +11,16 @@ import type { Guard, Ninja } from 'utils/types/character';
 import { MissionEvent, MissionOutcome, MissionResult } from 'utils/types/events';
 
 const MissionPage: NextPage = () => {
-    const ninja: Ninja = generateNinja(100);
+    const [ninja, setNinja] = useState<Ninja>();
+
+    useEffect(() => {
+        const ninjaRosterJson = localStorage.getItem('ninjaRoster');
+        const ninjaRoster = (ninjaRosterJson) ? JSON.parse(ninjaRosterJson) as Ninja[] : [generateNinja(100)];
+
+        setNinja(ninjaRoster[0]);
+    }, [])
+
+
     const compound: Guard[] = [generateGuard(30), generateGuard(30)];
     const [outcome, setOutcome] = useState<MissionOutcome>({
         missionResult: MissionResult.UNRESOLVED,
@@ -45,14 +54,14 @@ const MissionPage: NextPage = () => {
     }, [missionEvents, outcome.missionResult])
 
     const startMission = () => {
+        if(!ninja) return;
         calculateMissionOutcome(ninja, compound, updateMissionEvents)
     }
 
     const guardsPassed = React.useMemo(() => outcome.assassinated + outcome.evaded + outcome.poisoned + outcome.trapped, [outcome]);
 
-    return (
+    return !ninja ? <div>Loading...</div> : (
         <>
-            
             <main className='h-full w-full grid grid-cols-2 bg-gradient-to-br from-theme-black via-theme-black to-primary-dark'>
                 <section id="mission-name" className='flex flex-col gap-8'>
                     <div className='items-center p-4 rounded'>
