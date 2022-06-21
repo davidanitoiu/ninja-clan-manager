@@ -1,11 +1,22 @@
-import { generateNinja } from 'utils/engine';
-import { Ninja } from 'utils/types/character';
-import type { Column, Row } from 'react-data-grid';
-import DataGrid from 'react-data-grid';
 import { capitalize, map, slice } from 'lodash';
-import { ChangeEvent, Key, useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
+import { ChangeEvent, useMemo, useState } from 'react';
+import type { Column } from 'react-data-grid';
+import DataGrid from 'react-data-grid';
+import { Ninja } from 'utils/types/character';
 
-function NinjaRoster({ ninjaRoster = [] }: { ninjaRoster: Ninja[] }) {
+interface NinjaRosterProps {
+    list: Ninja[]
+}
+
+function NinjaRosterScreen({ list }: NinjaRosterProps) {
+    const router = useRouter();
+
+    const handleRowClick = (row: Ninja) => {
+        if (row) {
+            router.push('/ninja?id=' + row.id);
+        }
+    }
 
     const columns: Column<Ninja>[] = [
         { 'key': 'id', 'name': 'ID' },
@@ -68,22 +79,19 @@ function NinjaRoster({ ninjaRoster = [] }: { ninjaRoster: Ninja[] }) {
                     <option value={key} key={key}>{capitalize(key)}</option>
                 ))}
             </select>
+            {/* react-data-grid doesn't like my column type definition. 
+                one day I may find out why, but that day, is not today
+             */}
             {/* @ts-ignore */}
-            <DataGrid columns={filteredColumns} rows={ninjaRoster} rowKeyGetter={rowKeyGetter} />
+            <DataGrid columns={filteredColumns}
+                rows={list}
+                rowKeyGetter={rowKeyGetter}
+                onRowClick={handleRowClick}
+            />
 
 
         </main>
     )
 }
 
-export async function getServerSideProps() {
-    const ninjaRoster = [generateNinja(50), generateNinja(70), generateNinja(60), generateNinja(40), generateNinja(20), generateNinja(100), generateNinja(100)];
-
-    return {
-        props: { ninjaRoster }
-    }
-}
-
-export default NinjaRoster;
-
-
+export default NinjaRosterScreen;
