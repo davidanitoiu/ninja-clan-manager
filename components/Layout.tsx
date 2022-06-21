@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-import { GiRunningNinja, GiPestleMortar, GiWizardStaff, GiGrainBundle, GiPagoda, GiTavernSign, GiTiedScroll } from "react-icons/gi";
 import { FaUserNinja, FaUsers } from "react-icons/fa";
-import { useRouter } from "next/router";
+import { GiGrainBundle, GiPagoda, GiPestleMortar, GiRunningNinja, GiTavernSign, GiTiedScroll, GiWizardStaff } from "react-icons/gi";
 
 interface LayoutProps {
-    children: ReactNode
+    children: ReactNode,
 }
 
 function Layout({ children }: LayoutProps) {
-    const router = useRouter();
 
     return (
         <div className="flex h-screen">
@@ -25,7 +23,7 @@ function Layout({ children }: LayoutProps) {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/ninja-roster">
+                            <Link href="/ninja">
                                 <a className="flex items-center p-2">
                                     <FaUserNinja className="text-xl" />
                                     <span className="ml-3">Ninjas</span>
