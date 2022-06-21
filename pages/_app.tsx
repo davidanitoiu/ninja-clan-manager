@@ -1,10 +1,25 @@
 import "@fontsource/permanent-marker";
-import 'styles/globals.css'
-import type { AppProps } from 'next/app'
 import Layout from "components/Layout";
+import type { AppProps } from 'next/app';
 import Head from "next/head";
+import { useEffect } from "react";
+import 'styles/globals.css';
+import { generateNinja } from "utils/engine";
+import { Ninja } from "utils/types/character";
 
-function MyApp({ Component, pageProps }: AppProps) {
+interface MyAppProps extends AppProps {
+  ninjas: Ninja[]
+}
+
+function MyApp({ Component, pageProps, ninjas }: MyAppProps) {
+  useEffect(() => {
+    const ninjaRoster = localStorage.getItem('ninjaRoster');
+
+    if(!ninjaRoster) {
+      localStorage.setItem('ninjaRoster', JSON.stringify(ninjas));
+    }
+  }, [])
+
   return (
     <>
       <Head>
@@ -17,6 +32,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Layout>
     </>
   )
+}
+
+MyApp.getInitialProps = async () => {
+  const ninjas = [generateNinja(50), generateNinja(70), generateNinja(60), generateNinja(40), generateNinja(20), generateNinja(100), generateNinja(100)];
+  return { ninjas }
 }
 
 export default MyApp
