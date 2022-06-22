@@ -16,73 +16,73 @@ function Layout({ children }: LayoutProps) {
                     <ul className="space-y-2">
                         <li>
                             <Link href="/">
-                                <a className="flex items-center p-2">
+                                <a className="flex items-center px-4 py-2 gap-4">
                                     <GiWizardStaff className="text-xl" />
-                                    <span className="ml-3">Headmaster</span>
+                                    Headmaster
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/ninja">
-                                <a className="flex items-center p-2">
+                                <a className="flex items-center px-4 py-2 gap-4">
                                     <FaUserNinja className="text-xl" />
-                                    <span className="ml-3">Ninjas</span>
+                                    Ninjas
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/">
-                                <a className="flex items-center p-2">
+                                <a className="flex items-center px-4 py-2 gap-4">
                                     <GiTavernSign className="text-xl" />
-                                    <span className="ml-3">Den</span>
+                                    Den
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/">
-                                <a className="flex items-center p-2">
+                                <a className="flex items-center px-4 py-2 gap-4">
                                     <GiPagoda className="text-xl" />
-                                    <span className="ml-3">School</span>
+                                    School
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/">
-                                <a className="flex items-center p-2">
+                                <a className="flex items-center px-4 py-2 gap-4">
                                     <GiTiedScroll className="text-xl" />
-                                    <span className="ml-3">Messages</span>
+                                    Messages
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/">
-                                <a className="flex items-center p-2">
+                                <a className="flex items-center px-4 py-2 gap-4">
                                     <FaUsers className="text-xl" />
-                                    <span className="ml-3">Staff</span>
+                                    Staff
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/">
-                                <a className="flex items-center p-2">
+                                <a className="flex items-center px-4 py-2 gap-4">
                                     <GiGrainBundle className="text-xl" />
-                                    <span className="ml-3">Finances</span>
+                                    Finances
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/">
-                                <a className="flex items-center p-2">
+                                <a className="flex items-center px-4 py-2 gap-4">
                                     <GiRunningNinja className="text-xl" />
-                                    <span className="ml-3">Training</span>
+                                    Training
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/">
-                                <a className="flex items-center p-2">
+                                <a className="flex items-center px-4 py-2 gap-4">
                                     <GiPestleMortar className="text-xl" />
-                                    <span className="ml-3">Doctor</span>
+                                    Doctor
                                 </a>
                             </Link>
                         </li>
