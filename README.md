@@ -275,3 +275,5 @@ Middle of day 3
 End of day 3
 <img src="./public/End Day 3.png" alt="Progress around end of day 3" />
 
+End of day 6
+<img src="./public/End Day 6.png" alt="Progress around end of day 6" />
