@@ -26,12 +26,61 @@ Including maybe some things from the Hitman series.
 I have no idea how to do graphics or 3D, that's why this first version will be a browser-based text-game.
 
 ---
+
+## Current Step
+
+
+[ ] Create Mission Board
+    -> Create mission type variation
+    -> Create mission generator
+    -> Adjust mission engine
+[ ] Integrate Ninja Roster with Mission Board
+[ ] Trim down options to have a minimum playable game
+    -> Trim down attributes to only allow assassination missions for now
+    -> Core Game: "Hire ninjas. Send them on mission. Use profit to hire other ninjas and take greater missions"
+    -> Put other options back in later, as the features become available
+
+## UI Progression
+
+
+### Day 2
+
+End of day
+<img src="./public/End Day 2.png" alt="Progress around end of day 2" />
+
+### Day 3
+
+Start of day 
+<img src="./public/Start Day 3.png" alt="Progress around middle of day 3" />
+
+Middle of day 3
+<img src="./public/Middle Day 3.png" alt="Progress around middle of day 3" />
+
+End of day 3
+<img src="./public/End Day 3.png" alt="Progress around end of day 3" />
+
+### Day 6
+
+End of day 6
+<img src="./public/End Day 6.png" alt="Progress around end of day 6" />
+
+### Day 7
+
+End of day 7
+<img src="./public/End Day 7.png" alt="Progress around end of day 7" />
+
+
 ## Initial Assumptions
 
 This project is intended as a proof-of-concept.
 
 The game will use local storage to store the game state & generate a local database.
 The database will be auto-generated when starting the game based on a template of characters.
+
+### Consideration during development
+
+* Consider using Firebase for free S3 database storage
+* Consider using redux with local storage persistence
 
 ---
 ## Mission Simulation Engine
@@ -93,6 +142,31 @@ A captured ninja can choose to return or defect. This is determined by his loyal
 
 The sake den earns money based on the number of seats, decor, tavern keeper & waiter.
 The game ends when the school goes bankrupt.
+
+## Basic Concept
+
+You start the game killing some guy, get tons of cash.
+There'll be orphans, as consequence of your actions, and homeless folk (i.e.: the wives & children of the guards)
+
+If you triggered a war between rivalling daimyos, there'd be even more deaths and as a consequence more orphans.
+Most orphans will die and some will be found by your spies (beggars, prostitutes, tavern keepers, bought officials, etc)
+
+Once brought to you, you get to choose which ones you keep and which ones you leave to their fate.
+Your ability to spot current ability & potential ability should influence your decisions (accuracy dependend on your headmasters or teacher's skill)
+
+Even if you'd like to keep all, it will affect your ability to feed your current roster.
+If you take on too many, all will starve and you lose the game.
+
+The larger the school, the more orphans you can have.
+
+The game is over when your headmaster dies of old age, is assassinated by a rival clan or died in a successful assault on your school,
+betrayed by someone close to you or... well any other number of reasons
+
+Focus should be on expanding influence & control across japan (placing spies, adding dens, etc)
+
+In effect, you sorta won the game when you are the puppet-master in the shadows,
+ruling over the Japan, but there is no victory condition, so you can keep going as long as you want.
+
 
 ### Jobs to be filled
 
@@ -197,7 +271,7 @@ If both ninjas reach the same area in about the same time
     Ideas that came up in the process:
     - Ninja has too many chances to fail, consider some cheating mechanism that gives the ninja an edge, but doesn't seem overpowered
     - Ninjas fight dirty. So cheating is not only permitted, but encouraged!
-    - consider using some AI that better utilizes the large palette of skills
+    - ~~consider using some AI that better utilizes the large palette of skills~~ (see AI section below)
 [v] Implemented a basic message queue which narrates the mission progress in a readable way
     Ideas that came up in the process:
     - consider using some AI to generate the narrative
@@ -206,29 +280,20 @@ If both ninjas reach the same area in about the same time
 [v] Added font & icons
 [v] Added sidebar
 [v] Style the mission UI with Tailwind CSS to resemble Championship Manager 01/02
-
-## Current Step
-
 [v] Connect stub UI with mission engine
 [v] Calculate mission outcome from message queue
-[ ] Show Ninja attributes in the Ninjas tab
+[v] Add Japanese name generator
+    -> had to create one, couldn't find a reliable npm module
+    -> snatched names from multiple generator sites
+    -> **consider exporting to own library**
+[v] Update Ninja type to separate attributes from other information
+[v] Show Ninja attributes in the Ninjas tab
 
-## UI Progression
+## AI
 
+I wanted to use AI and have it figure out how to best utilize the ninja skills, by reading books & watching movies. 
 
-### Day 2
+Thing is... maybe, just MAYBE, it's not a good idea to use machine learning to have AI figure out how to kill humans & get away with it.
 
-End of day
-<img src="./public/End Day 2.png" alt="Progress around end of day 2" />
-
-### Day 3
-
-Start of day 
-<img src="./public/Start Day 3.png" alt="Progress around middle of day 3" />
-
-Middle of day 3
-<img src="./public/Middle Day 3.png" alt="Progress around middle of day 3" />
-
-End of day 3
-<img src="./public/End Day 3.png" alt="Progress around end of day 3" />
+Maybe we'll still use it for generating the narrative text. Not sure how to mix it in.
 

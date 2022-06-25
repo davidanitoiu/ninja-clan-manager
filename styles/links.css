@@ -1,3 +1,7 @@
 aside a {
-    @apply font-display transition-colors rounded focus:bg-primary-dark focus:outline-none hover:bg-primary;
+    mask: url(border-4.svg) no-repeat;
+    mask-size: auto 100%;
+    mask-position: 0% 100%;
+
+    @apply font-display transition-colors rounded focus:bg-primary-dark focus:outline-none hover:bg-primary-dark px-5;
 }

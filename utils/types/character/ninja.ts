@@ -1,7 +1,13 @@
 import { Attribute } from "../basic"
 
 export type Ninja = {
-      name: string,
+  id: string,
+  personal: {
+    name: string,
+    age: number
+  },
+  attributes: {
+    physical: {
       strength: Attribute,
       stamina: Attribute,
       reflexes: Attribute,
@@ -10,8 +16,12 @@ export type Ninja = {
       agility: Attribute,
       balance: Attribute,
       precision: Attribute,
+    },
+    combat: {
       handToHand: Attribute,
       ranged: Attribute,
+    },
+    subterfuge: {
       stealth: Attribute,
       assassination: Attribute,
       pickpocketing: Attribute,
@@ -19,6 +29,8 @@ export type Ninja = {
       poison: Attribute,
       medicine: Attribute,
       trapMaking: Attribute,
+    },
+    mental: {
       aggression: Attribute,
       anticipation: Attribute,
       decision: Attribute,
@@ -28,4 +40,5 @@ export type Ninja = {
       negotiation: Attribute,
       influence: Attribute,
     }
-  
+  }
+}

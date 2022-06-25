@@ -1,7 +1,6 @@
 import { forEach, round } from 'lodash';
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { FaSnowflake } from 'react-icons/fa';
 import { GiGrainBundle, GiShurikenAperture, GiTreasureMap } from 'react-icons/gi';
 import { ImEye } from 'react-icons/im';
@@ -12,7 +11,16 @@ import type { Guard, Ninja } from 'utils/types/character';
 import { MissionEvent, MissionOutcome, MissionResult } from 'utils/types/events';
 
 const MissionPage: NextPage = () => {
-    const ninja: Ninja = generateNinja(100);
+    const [ninja, setNinja] = useState<Ninja>();
+
+    useEffect(() => {
+        const ninjaRosterJson = localStorage.getItem('ninjaRoster');
+        const ninjaRoster = (ninjaRosterJson) ? JSON.parse(ninjaRosterJson) as Ninja[] : [generateNinja(100)];
+
+        setNinja(ninjaRoster[0]);
+    }, [])
+
+
     const compound: Guard[] = [generateGuard(30), generateGuard(30)];
     const [outcome, setOutcome] = useState<MissionOutcome>({
         missionResult: MissionResult.UNRESOLVED,
@@ -45,59 +53,15 @@ const MissionPage: NextPage = () => {
         }
     }, [missionEvents, outcome.missionResult])
 
-    // const updateNinja = ((event: React.ChangeEvent<HTMLInputElement>) => {
-    //     event.preventDefault();
-    //     const attributeInput = event.currentTarget;
-
-    //     setNinja(currentValue => ({
-    //         ...currentValue,
-    //         [attributeInput.name]: attributeInput.value
-    //     }))
-    // })
-
-    // const updateCompound = ((event: React.ChangeEvent<HTMLInputElement>) => {
-    //     event.preventDefault();
-    //     const attributeInput = event.currentTarget;
-    //     const guardNumber = Number(attributeInput.getAttribute('data-guard-number'));
-
-    //     setCompound(currentValue => {
-    //         currentValue[guardNumber] = {
-    //             ...currentValue[guardNumber],
-    //             [attributeInput.name]: attributeInput.value
-    //         }
-    //         return [...currentValue]
-    //     })
-    // })
-
-    // const addGuard = ((event: React.MouseEvent<HTMLButtonElement>) => {
-    //     event.preventDefault();
-
-    //     setCompound((currentValue: Guard[]) => {
-    //         const newGuard = generateGuard(power);
-
-    //         return [...currentValue, newGuard];
-    //     })
-    // })
-
-    // const removeGuard = ((event: React.MouseEvent<HTMLButtonElement>) => {
-    //     event.preventDefault();
-
-    //     setCompound((currentValue: Guard[]) => currentValue.slice(0, currentValue.length - 1))
-    // })
-
     const startMission = () => {
+        if(!ninja) return;
         calculateMissionOutcome(ninja, compound, updateMissionEvents)
     }
 
     const guardsPassed = React.useMemo(() => outcome.assassinated + outcome.evaded + outcome.poisoned + outcome.trapped, [outcome]);
 
-    return (
+    return !ninja ? <div>Loading...</div> : (
         <>
-            <Head>
-                <title>Ninja Clan Manager - Mission</title>
-                <meta name="description" content="Manager type game, inspired by Football Manager, but with Ninjas" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             <main className='h-full w-full grid grid-cols-2 bg-gradient-to-br from-theme-black via-theme-black to-primary-dark'>
                 <section id="mission-name" className='flex flex-col gap-8'>
                     <div className='items-center p-4 rounded'>
@@ -135,7 +99,7 @@ const MissionPage: NextPage = () => {
                 </section>
                 <section id="score-board" className="w-full grid grid-cols-2 gap-8 p-4 mt-">
                     <div className='grid place-content-start gap-4 px-4 text-theme-white font-display text-2xl'>
-                        <div className='flex gap-2 items-baseline'><IoSkull className={`text-3xl ${outcome.missionResult === MissionResult.EXECUTED ? 'visible' : 'invisible'}`} /><p className={`title-border text-4xl`}>{ninja.name}</p></div>
+                        <div className='flex gap-2 items-baseline'><IoSkull className={`text-3xl ${outcome.missionResult === MissionResult.EXECUTED ? 'visible' : 'invisible'}`} /><p className={`title-border text-4xl`}>{ninja.personal.name}</p></div>
                         <ul className='grid gap-2 pl-4'>
                             <li><p className='flex justify-between'>Assassinated <span>{outcome.assassinated}</span></p></li>
                             <li><p className='flex justify-between'>Trapped <span>{outcome.trapped}</span></p></li>

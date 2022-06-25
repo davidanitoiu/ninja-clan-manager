@@ -13,6 +13,23 @@
     @apply block mt-2 w-full h-4 bg-primary-dark;
 }
 
+.title-background {
+    mask: url(border-7.svg) no-repeat;
+    mask-size: 100% 200%, contain;
+    mask-position: 50% 50%;
+
+    @apply bg-primary-dark;
+}
+
+.attribute-background {
+    mask: url(border-9.svg) no-repeat;
+    mask-size: 100%, 200%;
+    mask-position: 50% 25%;
+
+    @apply bg-secondary-dark w-1/4 text-right pr-4;
+}
+
+
 .progress-bar-background {
     mask: url(border-1.svg) no-repeat;
     mask-position: 0% 100%;
@@ -20,7 +37,7 @@
     @apply block w-full h-16 bg-secondary-dark;
 }
 
-.progress-bar {    
+.progress-bar {
     mask: url(border-1.svg) no-repeat;
     mask-position: 0% 100%;
     mask-size: cover;
@@ -28,3 +45,20 @@
     @apply block h-16 bg-primary-dark;
 }
 
+.ninja-select {
+    border-image: url(border-image.svg) 15;
+    border-width: 1em;
+
+    @apply text-theme-white justify-self-end px-2 w-56 bg-theme-black relative;
+}
+
+.ninja-select > p {
+    @apply top-0 left-0 right-0  cursor-default;
+}
+
+.dropdown {
+    border-image: url(border-image.svg) 15;
+    border-width: 0 1em 1em;
+
+    @apply absolute z-20 mt-4 mb-1 ml-4 bg-theme-black px-2 cursor-default;
+}
