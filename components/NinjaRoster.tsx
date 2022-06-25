@@ -20,19 +20,19 @@ function NinjaRoster({ columns, list, onRowClick }: NinjaRosterProps) {
                 <thead>
                     <tr className="px-4 text-primary-dark h-12 text-lg">
                         {map((columns), column => (
-                            <th className={column.align ?? 'text-center'} key={column.key}>{column.name}</th>
+                            <th className={`first:pl-2 ${column.align ?? 'text-center'}`} key={column.key}>{column.name}</th>
                         ))}
                     </tr>
                 </thead>
                 <tbody>
                     {map(list, ninja => (
                         <tr key={ninja.id}
-                            className="hover:bg-primary-dark hover:cursor-pointer px-4 h-8"
+                            className="hover:bg-primary-dark hover:cursor-pointer px-4 h-8 rounded-lg"
                             onClick={() => onRowClick(ninja.id)}>
                             {map(columns, column => (
                                 <td key={column.key}
                                     itemProp={column.key}
-                                    className={`text-theme-white ${column.align ?? 'text-center'}`}
+                                    className={`first:pl-2 text-theme-white ${column.align ?? 'text-center'}`}
                                 >{column.formatter(ninja)}</td>
                             ))}
                         </tr>
