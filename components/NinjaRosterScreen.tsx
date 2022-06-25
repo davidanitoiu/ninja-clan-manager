@@ -1,9 +1,9 @@
-import { capitalize, map, slice } from 'lodash';
+import { capitalize, keys, map, slice, words } from 'lodash';
 import { useRouter } from 'next/router';
-import { ChangeEvent, useMemo, useState } from 'react';
-import type { Column } from 'react-data-grid';
-import DataGrid from 'react-data-grid';
+import { ChangeEvent, Key, useMemo, useState } from 'react';
 import { Ninja } from 'utils/types/character';
+import CustomSelect from './CustomSelect';
+import NinjaRoster from './NinjaRoster';
 
 interface NinjaRosterProps {
     list: Ninja[]
@@ -12,53 +12,49 @@ interface NinjaRosterProps {
 function NinjaRosterScreen({ list }: NinjaRosterProps) {
     const router = useRouter();
 
-    const handleRowClick = (row: Ninja) => {
-        if (row) {
-            router.push('/ninja?id=' + row.id);
-        }
+    const handleRowClick = (ninjaId: Key) => {
+        router.push('/ninja?id=' + ninjaId);
     }
 
-    const columns: Column<Ninja>[] = [
-        { 'key': 'id', 'name': 'ID' },
-        { 'key': 'name', 'name': 'Name', formatter: (props) => props.row.personal.name ?? 'No Name' },
-        { 'key': 'age', 'name': 'Age', formatter: (props) => props.row.personal.age ?? 0 },
-        { 'key': 'strength', 'name': 'Str', formatter: (props) => props.row.attributes.physical.strength ?? 0 },
-        { 'key': 'stamina', 'name': 'Sta', formatter: (props) => props.row.attributes.physical.stamina ?? 0 },
-        { 'key': 'reflexes', 'name': 'Ref', formatter: (props) => props.row.attributes.physical.reflexes ?? 0 },
-        { 'key': 'pace', 'name': 'Pac', formatter: (props) => props.row.attributes.physical.pace ?? 0 },
-        { 'key': 'acceleration', 'name': 'Acc', formatter: (props) => props.row.attributes.physical.acceleration ?? 0 },
-        { 'key': 'agility', 'name': 'Acc', formatter: (props) => props.row.attributes.physical.agility ?? 0 },
-        { 'key': 'balance', 'name': 'Bal', formatter: (props) => props.row.attributes.physical.balance ?? 0 },
-        { 'key': 'precision', 'name': 'Pre', formatter: (props) => props.row.attributes.physical.precision ?? 0 },
-        { 'key': 'handToHand', 'name': 'Han', formatter: (props) => props.row.attributes.combat.handToHand ?? 0 },
-        { 'key': 'ranged', 'name': 'Ran', formatter: (props) => props.row.attributes.combat.ranged ?? 0 },
-        { 'key': 'stealth', 'name': 'Ste', formatter: (props) => props.row.attributes.subterfuge.stealth ?? 0 },
-        { 'key': 'assassination', 'name': 'Ass', formatter: (props) => props.row.attributes.subterfuge.assassination ?? 0 },
-        { 'key': 'pickpocketing', 'name': 'Pic', formatter: (props) => props.row.attributes.subterfuge.pickpocketing ?? 0 },
-        { 'key': 'lockpicking', 'name': 'Loc', formatter: (props) => props.row.attributes.subterfuge.lockpicking ?? 0 },
-        { 'key': 'poison', 'name': 'Poi', formatter: (props) => props.row.attributes.subterfuge.poison ?? 0 },
-        { 'key': 'medicine', 'name': 'Med', formatter: (props) => props.row.attributes.subterfuge.medicine ?? 0 },
-        { 'key': 'trapMaking', 'name': 'Tra', formatter: (props) => props.row.attributes.subterfuge.trapMaking ?? 0 },
-        { 'key': 'aggression', 'name': 'Agg', formatter: (props) => props.row.attributes.mental.aggression ?? 0 },
-        { 'key': 'anticipation', 'name': 'Ant', formatter: (props) => props.row.attributes.mental.anticipation ?? 0 },
-        { 'key': 'decision', 'name': 'Dec', formatter: (props) => props.row.attributes.mental.decision ?? 0 },
-        { 'key': 'creativity', 'name': 'Cre', formatter: (props) => props.row.attributes.mental.creativity ?? 0 },
-        { 'key': 'positioning', 'name': 'Pos', formatter: (props) => props.row.attributes.mental.positioning ?? 0 },
-        { 'key': 'scouting', 'name': 'Sco', formatter: (props) => props.row.attributes.mental.scouting ?? 0 },
-        { 'key': 'negotiation', 'name': 'Neg', formatter: (props) => props.row.attributes.mental.negotiation ?? 0 },
-        { 'key': 'influence', 'name': 'Inf', formatter: (props) => props.row.attributes.mental.influence ?? 0 },
+    const columns = [
+        { 'key': 'id', 'name': 'ID', align: 'text-left', formatter: (props: Ninja) => props.id ?? 'No ID' },
+        { 'key': 'name', 'name': 'Name', align: 'text-left', formatter: (props: Ninja) => props.personal.name ?? 'No Name' },
+        { 'key': 'age', 'name': 'Age', formatter: (props: Ninja) => props.personal.age ?? 0 },
+        { 'key': 'strength', 'name': 'Str', formatter: (props: Ninja) => props.attributes.physical.strength ?? 0 },
+        { 'key': 'stamina', 'name': 'Sta', formatter: (props: Ninja) => props.attributes.physical.stamina ?? 0 },
+        { 'key': 'reflexes', 'name': 'Ref', formatter: (props: Ninja) => props.attributes.physical.reflexes ?? 0 },
+        { 'key': 'pace', 'name': 'Pac', formatter: (props: Ninja) => props.attributes.physical.pace ?? 0 },
+        { 'key': 'acceleration', 'name': 'Acc', formatter: (props: Ninja) => props.attributes.physical.acceleration ?? 0 },
+        { 'key': 'agility', 'name': 'Acc', formatter: (props: Ninja) => props.attributes.physical.agility ?? 0 },
+        { 'key': 'balance', 'name': 'Bal', formatter: (props: Ninja) => props.attributes.physical.balance ?? 0 },
+        { 'key': 'precision', 'name': 'Pre', formatter: (props: Ninja) => props.attributes.physical.precision ?? 0 },
+        { 'key': 'handToHand', 'name': 'Han', formatter: (props: Ninja) => props.attributes.combat.handToHand ?? 0 },
+        { 'key': 'ranged', 'name': 'Ran', formatter: (props: Ninja) => props.attributes.combat.ranged ?? 0 },
+        { 'key': 'stealth', 'name': 'Ste', formatter: (props: Ninja) => props.attributes.subterfuge.stealth ?? 0 },
+        { 'key': 'assassination', 'name': 'Ass', formatter: (props: Ninja) => props.attributes.subterfuge.assassination ?? 0 },
+        { 'key': 'pickpocketing', 'name': 'Pic', formatter: (props: Ninja) => props.attributes.subterfuge.pickpocketing ?? 0 },
+        { 'key': 'lockpicking', 'name': 'Loc', formatter: (props: Ninja) => props.attributes.subterfuge.lockpicking ?? 0 },
+        { 'key': 'poison', 'name': 'Poi', formatter: (props: Ninja) => props.attributes.subterfuge.poison ?? 0 },
+        { 'key': 'medicine', 'name': 'Med', formatter: (props: Ninja) => props.attributes.subterfuge.medicine ?? 0 },
+        { 'key': 'trapMaking', 'name': 'Tra', formatter: (props: Ninja) => props.attributes.subterfuge.trapMaking ?? 0 },
+        { 'key': 'aggression', 'name': 'Agg', formatter: (props: Ninja) => props.attributes.mental.aggression ?? 0 },
+        { 'key': 'anticipation', 'name': 'Ant', formatter: (props: Ninja) => props.attributes.mental.anticipation ?? 0 },
+        { 'key': 'decision', 'name': 'Dec', formatter: (props: Ninja) => props.attributes.mental.decision ?? 0 },
+        { 'key': 'creativity', 'name': 'Cre', formatter: (props: Ninja) => props.attributes.mental.creativity ?? 0 },
+        { 'key': 'positioning', 'name': 'Pos', formatter: (props: Ninja) => props.attributes.mental.positioning ?? 0 },
+        { 'key': 'scouting', 'name': 'Sco', formatter: (props: Ninja) => props.attributes.mental.scouting ?? 0 },
+        { 'key': 'negotiation', 'name': 'Neg', formatter: (props: Ninja) => props.attributes.mental.negotiation ?? 0 },
+        { 'key': 'influence', 'name': 'Inf', formatter: (props: Ninja) => props.attributes.mental.influence ?? 0 },
     ]
 
-    const rowKeyGetter = (row: Ninja) => row.id;
-
-    interface ColumnTypes {
-        [key: string]: Column<Ninja>[]
+    interface CategoryFilters {
+        [key: string]: typeof columns
     }
 
-    const columnTypes: ColumnTypes = {
-        all: columns,
+    const categoryFilters: CategoryFilters = {
+        all: slice(columns, 1),
         personal: slice(columns, 1, 3),
-        'only Attributes': [columns[1], ...slice(columns, 3)],
+        onlyAttributes: [columns[1], ...slice(columns, 3)],
         physical: [columns[1], ...slice(columns, 3, 11)],
         combat: [columns[1], ...slice(columns, 11, 13)],
         subterfuge: [columns[1], ...slice(columns, 13, 20)],
@@ -66,29 +62,27 @@ function NinjaRosterScreen({ list }: NinjaRosterProps) {
     }
 
     const [tableFilter, setTableFilter] = useState('all');
-    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        setTableFilter(event.target.value);
+    const handleChange = (value: string) => {
+        setTableFilter(value);
     }
 
-    const filteredColumns = useMemo(() => columnTypes[tableFilter], [tableFilter])
+    const filteredColumns = useMemo(() => categoryFilters[tableFilter], [tableFilter])
+    const columnTypes = map(keys(categoryFilters), key => ({ key, value: capitalize(words(key).join(' ')) }));
 
     return (
-        <main className='w-full font-display'>
-            <select value={tableFilter} onChange={handleChange}>
-                {map(columnTypes, (_, key) => (
-                    <option value={key} key={key}>{capitalize(key)}</option>
-                ))}
-            </select>
-            {/* react-data-grid doesn't like my column type definition. 
-                one day I may find out why, but that day, is not today
-             */}
-            {/* @ts-ignore */}
-            <DataGrid columns={filteredColumns}
-                rows={list}
-                rowKeyGetter={rowKeyGetter}
+        <main className='w-full font-display bg-gradient-to-br from-theme-black via-theme-black to-primary-dark p-4 gap-8 flex flex-col'>
+            <div>
+                <h2 className='text-theme-white text-4xl'>Clan: Iga</h2>
+            </div>
+            <div className='flex justify-between'>
+                <CustomSelect value={tableFilter} options={columnTypes} onChange={handleChange} />
+            </div>
+
+            <NinjaRoster
+                columns={filteredColumns}
+                list={list}
                 onRowClick={handleRowClick}
             />
-
 
         </main>
     )

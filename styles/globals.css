@@ -13,8 +13,6 @@
     @apply block mt-2 w-full h-4 bg-primary-dark;
 }
 
-
-
 .title-background {
     mask: url(border-7.svg) no-repeat;
     mask-size: 100% 200%, contain;
@@ -45,4 +43,22 @@
     mask-size: cover;
     transition: width 2s;
     @apply block h-16 bg-primary-dark;
+}
+
+.ninja-select {
+    border-image: url(border-image.svg) 15;
+    border-width: 1em;
+
+    @apply text-theme-white justify-self-end px-2 w-56 bg-theme-black relative;
+}
+
+.ninja-select > p {
+    @apply top-0 left-0 right-0  cursor-default;
+}
+
+.dropdown {
+    border-image: url(border-image.svg) 15;
+    border-width: 0 1em 1em;
+
+    @apply absolute z-20 mt-4 mb-1 ml-4 bg-theme-black px-2 cursor-default;
 }
