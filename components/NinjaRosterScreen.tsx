@@ -1,6 +1,6 @@
 import { capitalize, keys, map, slice, words } from 'lodash';
 import { useRouter } from 'next/router';
-import { ChangeEvent, Key, useMemo, useState } from 'react';
+import { Key, useState } from 'react';
 import { Ninja } from 'utils/types/character';
 import CustomSelect from './CustomSelect';
 import NinjaRoster from './NinjaRoster';
@@ -66,7 +66,7 @@ function NinjaRosterScreen({ list }: NinjaRosterProps) {
         setTableFilter(value);
     }
 
-    const filteredColumns = useMemo(() => categoryFilters[tableFilter], [tableFilter])
+    const filteredColumns = categoryFilters[tableFilter];
     const columnTypes = map(keys(categoryFilters), key => ({ key, value: capitalize(words(key).join(' ')) }));
 
     return (

@@ -25,7 +25,7 @@ function CustomSelect({ value, options, onChange }: CustomSelectProps) {
                 <p className="flex justify-between gap-4 text-lg w-full">{words(value).join(' ')} <span className="text-primary-dark font-bold">{dropDownVisible ? '^' : 'v'}</span></p>
                 <ul className={`dropdown ${dropDownVisible ? 'block' : 'hidden'}`} role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
                     {map(reject(options, { key: value }), option => (
-                        <li key={option.key} onClick={() => onChange(option.key)} role="option"><p className="dropdown-option">{option.value}</p></li>
+                        <li key={option.key} onClick={() => onChange(option.key)} role="option" aria-selected={value === option.key}><p className="dropdown-option">{option.value}</p></li>
                     ))}
                 </ul>
             </div>

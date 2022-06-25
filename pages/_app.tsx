@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps, ninjas }: MyAppProps) {
     if(!ninjaRoster) {
       localStorage.setItem('ninjaRoster', JSON.stringify(ninjas));
     }
-  }, [])
+  }, [ninjas])
 
   return (
     <>
