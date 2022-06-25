@@ -26,6 +26,50 @@ Including maybe some things from the Hitman series.
 I have no idea how to do graphics or 3D, that's why this first version will be a browser-based text-game.
 
 ---
+
+## Current Step
+
+
+[ ] Create Mission Board
+    -> Create mission type variation
+    -> Create mission generator
+    -> Adjust mission engine
+[ ] Integrate Ninja Roster with Mission Board
+[ ] Trim down options to have a minimum playable game
+    -> Trim down attributes to only allow assassination missions for now
+    -> Core Game: "Hire ninjas. Send them on mission. Use profit to hire other ninjas and take greater missions"
+    -> Put other options back in later, as the features become available
+
+## UI Progression
+
+
+### Day 2
+
+End of day
+<img src="./public/End Day 2.png" alt="Progress around end of day 2" />
+
+### Day 3
+
+Start of day 
+<img src="./public/Start Day 3.png" alt="Progress around middle of day 3" />
+
+Middle of day 3
+<img src="./public/Middle Day 3.png" alt="Progress around middle of day 3" />
+
+End of day 3
+<img src="./public/End Day 3.png" alt="Progress around end of day 3" />
+
+### Day 6
+
+End of day 6
+<img src="./public/End Day 6.png" alt="Progress around end of day 6" />
+
+### Day 7
+
+End of day 7
+<img src="./public/End Day 7.png" alt="Progress around end of day 7" />
+
+
 ## Initial Assumptions
 
 This project is intended as a proof-of-concept.
@@ -238,15 +282,12 @@ If both ninjas reach the same area in about the same time
 [v] Style the mission UI with Tailwind CSS to resemble Championship Manager 01/02
 [v] Connect stub UI with mission engine
 [v] Calculate mission outcome from message queue
-
-## Current Step
-
 [v] Add Japanese name generator
     -> had to create one, couldn't find a reliable npm module
     -> snatched names from multiple generator sites
     -> **consider exporting to own library**
 [v] Update Ninja type to separate attributes from other information
-[ ] Show Ninja attributes in the Ninjas tab
+[v] Show Ninja attributes in the Ninjas tab
 
 ## AI
 
@@ -256,24 +297,3 @@ Thing is... maybe, just MAYBE, it's not a good idea to use machine learning to h
 
 Maybe we'll still use it for generating the narrative text. Not sure how to mix it in.
 
-## UI Progression
-
-
-### Day 2
-
-End of day
-<img src="./public/End Day 2.png" alt="Progress around end of day 2" />
-
-### Day 3
-
-Start of day 
-<img src="./public/Start Day 3.png" alt="Progress around middle of day 3" />
-
-Middle of day 3
-<img src="./public/Middle Day 3.png" alt="Progress around middle of day 3" />
-
-End of day 3
-<img src="./public/End Day 3.png" alt="Progress around end of day 3" />
-
-End of day 6
-<img src="./public/End Day 6.png" alt="Progress around end of day 6" />
