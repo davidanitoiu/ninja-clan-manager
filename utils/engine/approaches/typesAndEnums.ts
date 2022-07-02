@@ -1,0 +1,33 @@
+export enum Approach {
+    AMBUSH = "ambush",
+    COMBAT = "combat",
+    STEALTH = "stealth",
+    BRIBERY = "bribery",
+    TRAP = "trap",
+    PICKPOCKET = "pickpocket",
+    LOCKPICK = "lockpick",
+    POISON = "poison",
+    SNIPE = "snipe",
+    DISGUISE = "disguise",
+}
+
+export enum ApproachOutcome {
+    SUCCESS = "success",
+    FAILED = "failed",
+}
+
+export type Odds = {
+    ninjaScore: number,
+    guardScore: number,
+    successChance: number,
+}
+
+export type ApproachOdds = {
+    approach: Approach,
+    odds: Odds
+}[]
+
+export type CompoundApproachResults = {
+    approach: Approach,
+    success: boolean,
+}[]

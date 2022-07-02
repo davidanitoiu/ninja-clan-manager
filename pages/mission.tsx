@@ -1,6 +1,6 @@
 import { forEach, round } from 'lodash';
 import type { NextPage } from 'next';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaSnowflake } from 'react-icons/fa';
 import { GiGrainBundle, GiShurikenAperture, GiTreasureMap } from 'react-icons/gi';
 import { ImEye } from 'react-icons/im';
