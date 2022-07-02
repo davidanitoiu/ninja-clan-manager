@@ -23,8 +23,7 @@ function NinjaRosterScreen({ list }: NinjaRosterProps) {
         { 'key': 'strength', 'name': 'Str', formatter: (props: Ninja) => props.attributes.physical.strength ?? 0 },
         { 'key': 'stamina', 'name': 'Sta', formatter: (props: Ninja) => props.attributes.physical.stamina ?? 0 },
         { 'key': 'reflexes', 'name': 'Ref', formatter: (props: Ninja) => props.attributes.physical.reflexes ?? 0 },
-        { 'key': 'pace', 'name': 'Pac', formatter: (props: Ninja) => props.attributes.physical.pace ?? 0 },
-        { 'key': 'acceleration', 'name': 'Acc', formatter: (props: Ninja) => props.attributes.physical.acceleration ?? 0 },
+        { 'key': 'speed', 'name': 'Spd', formatter: (props: Ninja) => props.attributes.physical.speed ?? 0 },
         { 'key': 'agility', 'name': 'Acc', formatter: (props: Ninja) => props.attributes.physical.agility ?? 0 },
         { 'key': 'balance', 'name': 'Bal', formatter: (props: Ninja) => props.attributes.physical.balance ?? 0 },
         { 'key': 'precision', 'name': 'Pre', formatter: (props: Ninja) => props.attributes.physical.precision ?? 0 },
@@ -35,7 +34,6 @@ function NinjaRosterScreen({ list }: NinjaRosterProps) {
         { 'key': 'pickpocketing', 'name': 'Pic', formatter: (props: Ninja) => props.attributes.subterfuge.pickpocketing ?? 0 },
         { 'key': 'lockpicking', 'name': 'Loc', formatter: (props: Ninja) => props.attributes.subterfuge.lockpicking ?? 0 },
         { 'key': 'poison', 'name': 'Poi', formatter: (props: Ninja) => props.attributes.subterfuge.poison ?? 0 },
-        { 'key': 'medicine', 'name': 'Med', formatter: (props: Ninja) => props.attributes.subterfuge.medicine ?? 0 },
         { 'key': 'trapMaking', 'name': 'Tra', formatter: (props: Ninja) => props.attributes.subterfuge.trapMaking ?? 0 },
         { 'key': 'aggression', 'name': 'Agg', formatter: (props: Ninja) => props.attributes.mental.aggression ?? 0 },
         { 'key': 'anticipation', 'name': 'Ant', formatter: (props: Ninja) => props.attributes.mental.anticipation ?? 0 },
@@ -55,10 +53,10 @@ function NinjaRosterScreen({ list }: NinjaRosterProps) {
         all: slice(columns, 1),
         personal: slice(columns, 1, 3),
         onlyAttributes: [columns[1], ...slice(columns, 3)],
-        physical: [columns[1], ...slice(columns, 3, 11)],
-        combat: [columns[1], ...slice(columns, 11, 13)],
-        subterfuge: [columns[1], ...slice(columns, 13, 20)],
-        mental: [columns[1], ...slice(columns, 20)],
+        physical: [columns[1], ...slice(columns, 3, 10)],
+        combat: [columns[1], ...slice(columns, 10, 12)],
+        subterfuge: [columns[1], ...slice(columns, 12, 18)],
+        mental: [columns[1], ...slice(columns, 18)],
     }
 
     const [tableFilter, setTableFilter] = useState('all');

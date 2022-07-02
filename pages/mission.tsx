@@ -15,13 +15,15 @@ const MissionPage: NextPage = () => {
 
     useEffect(() => {
         const ninjaRosterJson = localStorage.getItem('ninjaRoster');
-        const ninjaRoster = (ninjaRosterJson) ? JSON.parse(ninjaRosterJson) as Ninja[] : [generateNinja(100)];
+
+        //const ninjaRoster = (ninjaRosterJson) ? JSON.parse(ninjaRosterJson) as Ninja[] : [generateNinja(20)];
+        const ninjaRoster = [generateNinja(50)];
 
         setNinja(ninjaRoster[0]);
     }, [])
 
 
-    const compound: Guard[] = [generateGuard(30), generateGuard(30)];
+    const compound: Guard[] = [generateGuard(50), generateGuard(50)];
     const [outcome, setOutcome] = useState<MissionOutcome>({
         missionResult: MissionResult.UNRESOLVED,
         spotted: false,
@@ -54,7 +56,7 @@ const MissionPage: NextPage = () => {
     }, [missionEvents, outcome.missionResult])
 
     const startMission = () => {
-        if(!ninja) return;
+        if (!ninja) return;
         calculateMissionOutcome(ninja, compound, updateMissionEvents)
     }
 
@@ -109,7 +111,7 @@ const MissionPage: NextPage = () => {
                         </ul>
                     </div>
                     <div className='grid place-content-start gap-4 px-4  text-theme-white font-display text-2xl '>
-                        <p className='title-border text-4xl'>Emperial Palace</p>
+                        <p className='title-border text-4xl'>Imperial Palace</p>
                         <ul className='grid gap-2 pl-4'>
                             <li><p className='flex justify-between'>Guards <span>{compound.length - guardsPassed}</span></p></li>
                         </ul>

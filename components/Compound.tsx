@@ -1,5 +1,5 @@
 import { map } from "lodash";
-import { Compound } from "utils/types/character/compound";
+import { Compound } from "utils/types/character";
 import Guard from "./Guard";
 
 interface CompoundProps {
@@ -11,7 +11,7 @@ function CompoundComponent({ compound, updateCompound }: CompoundProps): JSX.Ele
   return (
     <div>
       {map(compound, (guard, key) => (
-        <Guard guard={guard} key={guard.name} guardNumber={key} updateCompound={updateCompound} />
+        <Guard guard={guard} key={guard.id} guardNumber={key} updateCompound={updateCompound} />
       ))}
     </div>
   )

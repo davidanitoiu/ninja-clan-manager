@@ -1,5 +1,5 @@
 import { PowerLevel } from "utils/types/basic";
-import { Ninja } from "utils/types/character";
+import { Ninja, State } from "utils/types/character";
 import { random, uniqueId } from "lodash";
 import { Gender, nameGen } from "../japanese-name-generator/generateName";
 
@@ -9,15 +9,15 @@ export function generateNinja(power: PowerLevel): Ninja {
     id: uniqueId(),
     personal: {
       name: nameGen(Gender.MALE).fullName,
-      age: random(17, 46)
+      age: random(17, 46),
+      state: State.ALIVE
     },
     attributes: {
       physical: {
         strength: random(1, 20 * (power / 100)),
         stamina: random(1, 20 * (power / 100)),
         reflexes: random(1, 20 * (power / 100)),
-        pace: random(1, 20 * (power / 100)),
-        acceleration: random(1, 20 * (power / 100)),
+        speed: random(1, 20 * (power / 100)),
         agility: random(1, 20 * (power / 100)),
         balance: random(1, 20 * (power / 100)),
         precision: random(1, 20 * (power / 100)),
@@ -32,7 +32,6 @@ export function generateNinja(power: PowerLevel): Ninja {
         pickpocketing: random(1, 20 * (power / 100)),
         lockpicking: random(1, 20 * (power / 100)),
         poison: random(1, 20 * (power / 100)),
-        medicine: random(1, 20 * (power / 100)),
         trapMaking: random(1, 20 * (power / 100)),
       },
       mental: {

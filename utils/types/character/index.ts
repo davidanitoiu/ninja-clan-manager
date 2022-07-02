@@ -1,2 +1,1 @@
-export * from './ninja'
-export * from './compound'
+export * from './character';
