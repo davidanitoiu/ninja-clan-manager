@@ -14,9 +14,9 @@ export function calculateMissionOutcome(ninja: Ninja, compound: Compound, update
   const compoundApproachResults = calculateMissionDetails(ninja, compoundApproachOdds, missionSuccess);
 
   // generate missionEvents based on missionSuccess and compoundApproachResults
-  const missionEvents = generateMissionEvents(missionSuccess, compoundApproachResults);
+  const missionEvents = generateMissionEvents(ninja, missionSuccess, compoundApproachResults);
 
-  // updateMissionEvents(missionEvents);
+  updateMissionEvents(missionEvents);
 }
 
 function calculateMissionDetails(ninja: Ninja, compoundApproachOdds: ApproachOdds[], missionSuccess: boolean): CompoundApproachResults {

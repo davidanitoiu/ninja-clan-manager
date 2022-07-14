@@ -13,7 +13,9 @@ export enum Approach {
 
 export enum ApproachOutcome {
     SUCCESS = "success",
-    FAILED = "failed",
+    FAILED = "failure",
+    MISSION_SUCCESS = "missionSuccess",
+    MISSION_FAILED = "missionFailure",
 }
 
 export type Odds = {

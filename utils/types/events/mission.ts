@@ -1,4 +1,4 @@
-import { ApproachOutcome } from "utils/engine/approaches"
+import { Approach, ApproachOutcome } from "utils/engine/approaches"
 import type { Compound, Ninja } from "../character"
 
 export enum MissionResult {
@@ -15,6 +15,16 @@ export type MissionSetup = {
 }
 
 export type MissionEvent = {
-  data: ApproachOutcome,
+  approachOutcome: ApproachOutcome,
+  approachType: Approach,
   story: string
+}
+
+export type MissionOutcome = {
+  missionResult: MissionResult,
+  assassinated: number,
+  trapped: number,
+  evaded: number,
+  poisoned: number
+
 }
