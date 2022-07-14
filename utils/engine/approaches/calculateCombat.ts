@@ -19,5 +19,5 @@ export function calculateCombatScoreAndOdds(ninja: Ninja, guard: Guard) {
 
     ]);
 
-    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills, ninja.attributes.mental.decision);
+    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills);
 }

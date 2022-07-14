@@ -17,5 +17,5 @@ export function calculateLockpickScoreAndOdds(ninja: Ninja, guard: Guard) {
         ninja.attributes.subterfuge.lockpicking
     ]);
 
-    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills, ninja.attributes.mental.decision);
+    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills);
 }

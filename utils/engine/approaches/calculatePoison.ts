@@ -15,5 +15,5 @@ export function calculatePoisonScoreAndOdds(ninja: Ninja, guard: Guard) {
         ninja.attributes.physical.speed,
     ]);
 
-    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills, ninja.attributes.mental.decision);
+    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills);
 }

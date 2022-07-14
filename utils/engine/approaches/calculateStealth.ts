@@ -19,5 +19,5 @@ export function calculateStealthScoreAndOdds(ninja: Ninja, guard: Guard) {
         ninja.attributes.subterfuge.stealth
     ]);
 
-    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills, ninja.attributes.mental.decision);
+    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills);
 }

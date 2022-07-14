@@ -1,7 +1,2 @@
-import * as success from './success';
-import * as failure from './failure';
-
-export {
-    success,
-    failure,
-}
+export * as success from './success';
+export * as failure from './failure';

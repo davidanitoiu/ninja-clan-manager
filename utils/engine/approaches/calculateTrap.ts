@@ -21,5 +21,5 @@ export function calculateTrapScoreAndOdds(ninja: Ninja, guard: Guard) {
         ninja.attributes.subterfuge.trapMaking,
     ]);
 
-    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills, ninja.attributes.mental.decision);
+    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills);
 }

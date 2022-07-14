@@ -16,5 +16,5 @@ export function calculateBriberyScoreAndOdds(ninja: Ninja, guard: Guard) {
         ninja.attributes.mental.scouting
     ]);
 
-    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills, ninja.attributes.mental.decision);
+    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills);
 }

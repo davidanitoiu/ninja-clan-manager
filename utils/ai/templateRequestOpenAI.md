@@ -1,4 +1,4 @@
-/*
+
 
     Open AI request template
     Temperature: 0.2
@@ -14,6 +14,6 @@
 
     Using bullet-list format.
 
-  */
 
-// "ninja": {"personal":{"name":"Kiyota Yukio","age":41},"attributes":{"physical":{"strength":7,"stamina":2,"reflexes":8,"pace":5,"acceleration":2,"agility":6,"balance":9,"precision":8},"combat":{"handToHand":7,"ranged":3},"subterfuge":{"stealth":1,"assassination":7,"pickpocketing":6,"lockpicking":10,"poison":8,"medicine":5,"trapMaking":4},"mental":{"aggression":6,"anticipation":7,"decision":5,"creativity":9,"positioning":1,"scouting":3,"negotiation":7,"influence":1}}}
+
+"ninja": {"personal":{"name":"Kiyota Yukio","age":41},"attributes":{"physical":{"strength":7,"stamina":2,"reflexes":8,"pace":5,"acceleration":2,"agility":6,"balance":9,"precision":8},"combat":{"handToHand":7,"ranged":3},"subterfuge":{"stealth":1,"assassination":7,"pickpocketing":6,"lockpicking":10,"poison":8,"medicine":5,"trapMaking":4},"mental":{"aggression":6,"anticipation":7,"decision":5,"creativity":9,"positioning":1,"scouting":3,"negotiation":7,"influence":1}}}

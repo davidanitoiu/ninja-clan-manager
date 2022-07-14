@@ -20,5 +20,5 @@ export function calculateSnipeScoreAndOdds(ninja: Ninja, guard: Guard) {
         ninja.attributes.combat.ranged,
     ]);
 
-    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills, ninja.attributes.mental.decision);
+    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills);
 }

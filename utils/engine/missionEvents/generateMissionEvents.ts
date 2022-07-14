@@ -1,5 +1,4 @@
 import { random } from "lodash";
-import App from "next/app";
 import type { Ninja } from "utils/types/character";
 import { MissionEvent } from "utils/types/events";
 import { Approach, ApproachOutcome, CompoundApproachResults } from "../approaches";
@@ -19,10 +18,8 @@ export function generateMissionEvents(ninja: Ninja, missionSuccess: boolean, com
     })
 
     const finalAssassinationEvent = generateFinalAssassinationEvent(missionSuccess)
-    
-    missionEvents.push
 
-    console.dir(missionEvents);
+    missionEvents.push(finalAssassinationEvent);
 
     return missionEvents
 }
@@ -47,8 +44,14 @@ function generateFinalAssassinationEvent(missionSuccess: boolean): MissionEvent 
 }
 
 function generateStory(outcome: ApproachOutcome, approach: Approach): string {
-    const randomStory = random(0, missionEventStrings[outcome][approach].length - 1);
-    const storyTemplate = missionEventStrings[outcome][approach][randomStory] ?? 'Or maybe nothing happened...';
+    // adjust outcome so it can be used as an index for the missionEventStrings object
+    const missionEventOutcomeStrings = outcome === ApproachOutcome.SUCCESS
+        ? missionEventStrings.success
+        : missionEventStrings.failure;
+
+
+    const randomStory = random(0, missionEventOutcomeStrings[approach].length - 1);
+    const storyTemplate = missionEventOutcomeStrings[approach][randomStory] ?? 'Or maybe nothing happened...';
 
     return storyTemplate;
 }

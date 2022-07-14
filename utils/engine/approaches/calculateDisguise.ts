@@ -15,5 +15,5 @@ export function calculateDisguiseScoreAndOdds(ninja: Ninja, guard: Guard) {
         ninja.attributes.mental.negotiation,
     ]);
 
-    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills, ninja.attributes.mental.decision);
+    return calculateApproachScoreAndOdds(sumOfNinjaSkills, sumOfGuardSkills);
 }
