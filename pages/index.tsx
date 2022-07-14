@@ -8,7 +8,12 @@ const Home: NextPage = () => {
       <h2 className='text-2xl'>{"It's all under construction. ALL OF IT!"}</h2>
       <Link href={"/mission"}>
         <a className=' text-black hover:text-primary text-4xl transition-colors'>{">> Go to Mission Dashboard <<"}</a>
+
       </Link>
+      <Link href={"/ninja"}>
+        <a className=' text-black hover:text-primary text-4xl transition-colors'>{">> Go to Ninja Roster <<"}</a>
+      </Link>
+
     </div>
   )
 }
