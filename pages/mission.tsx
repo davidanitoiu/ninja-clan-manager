@@ -156,9 +156,6 @@ const MissionPage: NextPage = () => {
                             <li><p className='flex justify-between'>Guards <span>{guardsLeft}</span></p></li>
                         </ul>
                     </div>
-                    <div>
-                        <p>{JSON.stringify(Object.values(omit(outcome, 'missionResult')))}</p>
-                    </div>
                 </section>
 
 
